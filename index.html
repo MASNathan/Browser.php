@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Browser.php by MASNathan</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Browser.php</h1>
+        <h2>A PHP Class to detect a user&#39;s Browser</h2>
+        <a href="https://github.com/MASNathan/Browser.php" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="browserphp" class="anchor" href="#browserphp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Browser.php</h1>
+
+<p><a href="https://travis-ci.org/cbschuld/Browser.php"><img src="https://travis-ci.org/cbschuld/Browser.php.png?branch=master" alt="Build Status"></a></p>
+
+<p>Helps detect the user's browser and platform at the PHP level via the user agent</p>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>To install, simply <code>require</code> the <code>Browser.php</code> file under <code>lib</code>. </p>
+
+<p>You can also install it via <code>Composer</code> by using the <a href="https://packagist.org/packages/cbschuld/browser.php">Packagist archive</a>.</p>
+
+<h1>
+<a id="background" class="anchor" href="#background" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Background</h1>
+
+<p>Detecting the user's browser type and version is helpful in web applications that harness some of the newer bleeding edge concepts. With the browser type and version you can notify users about challenges they may experience and suggest they upgrade before using such application. Not a great idea on a large scale public site; but on a private application this type of check can be helpful.</p>
+
+<p>In an active project of mine we have a pretty graphically intensive and visually appealing user interface which leverages a lot of transparent PNG files. Because we all know how great IE6 supports PNG files it was necessary for us to tell our users the lack of power their browser has in a kind way.</p>
+
+<p>Searching for a way to do this at the PHP layer and not at the client layer was more of a challenge than I would have guessed; the only script available was written by Gary White and Gary no longer maintains this script because of reliability. I do agree 100% with Gary about the readability; however, there are realistic reasons to desire the user.s browser and browser version and if your visitor is not echoing a false user agent we can take an educated guess.</p>
+
+<p>I based this solution off of Gary White.s original solution but added a few things:</p>
+
+<p>I added the ability to view the return values as class constants to increase the readability</p>
+
+<ul>
+<li>Updated the version detection for Amaya</li>
+<li>Updated the version detection for Firefox</li>
+<li>Updated the version detection for Lynx</li>
+<li>Updated the version detection for WebTV</li>
+<li>Updated the version detection for NetPositive</li>
+<li>Updated the version detection for IE</li>
+<li>Updated the version detection for OmniWeb</li>
+<li>Updated the version detection for iCab</li>
+<li>Updated the version detection for Safari</li>
+<li>Added detection for Chrome</li>
+<li>Added detection for iPhone</li>
+<li>Added detection for robots</li>
+<li>Added detection for mobile devices</li>
+<li>Added detection for BlackBerry</li>
+<li>Added detection for iPhone</li>
+<li>Added detection for iPad</li>
+<li>Added detection for Android</li>
+<li>Removed Netscape checks</li>
+<li>Updated Safari to remove mobile devices (iPhone)</li>
+</ul>
+
+<p><strong>This solution identifies the following Operating Systems:</strong></p>
+
+<ul>
+<li>Windows (Browser::PLATFORM_WINDOWS)</li>
+<li>Windows CE (Browser::PLATFORM_WINDOWS_CE)</li>
+<li>Apple (Browser::PLATFORM_APPLE)</li>
+<li>Linux (Browser::PLATFORM_LINUX)</li>
+<li>Android (Browser::PLATFORM_ANDROID)</li>
+<li>OS/2 (Browser::PLATFORM_OS2)</li>
+<li>BeOS (Browser::PLATFORM_BEOS)</li>
+<li>iPhone (Browser::PLATFORM_IPHONE)</li>
+<li>iPod (Browser::PLATFORM_IPOD)</li>
+<li>BlackBerry (Browser::PLATFORM_BLACKBERRY)</li>
+<li>FreeBSD (Browser::PLATFORM_FREEBSD)</li>
+<li>OpenBSD (Browser::PLATFORM_OPENBSD)</li>
+<li>NetBSD (Browser::PLATFORM_NETBSD)</li>
+<li>SunOS (Browser::PLATFORM_SUNOS)</li>
+<li>OpenSolaris (Browser::PLATFORM_OPENSOLARIS)</li>
+<li>iPad (Browser::PLATFORM_IPAD)</li>
+</ul>
+
+<p><strong>This solution identifies the following Browsers and does a best-guess on the version:</strong></p>
+
+<ul>
+<li>Opera (Browser::BROWSER_OPERA)</li>
+<li>WebTV (Browser::BROWSER_WEBTV)</li>
+<li>NetPositive (Browser::BROWSER_NETPOSITIVE)</li>
+<li>Internet Explorer (Browser::BROWSER_IE)</li>
+<li>Pocket Internet Explorer (Browser::BROWSER_POCKET_IE)</li>
+<li>Galeon (Browser::BROWSER_GALEON)</li>
+<li>Konqueror (Browser::BROWSER_KONQUEROR)</li>
+<li>iCab (Browser::BROWSER_ICAB)</li>
+<li>OmniWeb (Browser::BROWSER_OMNIWEB)</li>
+<li>Phoenix (Browser::BROWSER_PHOENIX)</li>
+<li>Firebird (Browser::BROWSER_FIREBIRD)</li>
+<li>Firefox (Browser::BROWSER_FIREFOX)</li>
+<li>Mozilla (Browser::BROWSER_MOZILLA)</li>
+<li>Amaya (Browser::BROWSER_AMAYA)</li>
+<li>Lynx (Browser::BROWSER_LYNX)</li>
+<li>Safari (Browser::BROWSER_SAFARI)</li>
+<li>iPhone (Browser::BROWSER_IPHONE)</li>
+<li>iPod (Browser::BROWSER_IPOD)</li>
+<li>Google.s Android(Browser::BROWSER_ANDROID)</li>
+<li>Google.s Chrome(Browser::BROWSER_CHROME)</li>
+<li>GoogleBot(Browser::BROWSER_GOOGLEBOT)</li>
+<li>Yahoo!.s Slurp(Browser::BROWSER_SLURP)</li>
+<li>W3C.s Validator(Browser::BROWSER_W3CVALIDATOR)</li>
+<li>BlackBerry(Browser::BROWSER_BLACKBERRY)</li>
+</ul>
+
+<p><strong>Typical Usage:</strong></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$browser</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">Browser</span>();</span>
+<span class="pl-s1"><span class="pl-k">if</span>( <span class="pl-smi">$browser</span><span class="pl-k">-&gt;</span>getBrowser() <span class="pl-k">==</span> <span class="pl-c1">Browser</span><span class="pl-k">::</span><span class="pl-c1">BROWSER_FIREFOX</span> <span class="pl-k">&amp;&amp;</span> <span class="pl-smi">$browser</span><span class="pl-k">-&gt;</span>getVersion() <span class="pl-k">&gt;=</span> <span class="pl-c1">2</span> ) {</span>
+<span class="pl-s1">    <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>You have FireFox version 2 or greater<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">}</span></pre></div>
+
+<p>12/9/2008 Update</p>
+
+<ul>
+<li>removed an unused constant and renamed the constructor to use the PHP magic method __construct (thanks to Robin for locating the legacy constant and suggesting the use of the magic method).</li>
+</ul>
+
+<p>2/19/2009 Update</p>
+
+<ul>
+<li>updated typical usage to show a correct example! (thanks David!)</li>
+</ul>
+
+<p>2/24/2009 Update</p>
+
+<ul>
+<li>fixed typo in the usage! (thanks Adam!)</li>
+</ul>
+
+<p>3/14/2009 Update</p>
+
+<ul>
+<li>added support for the iPod; added iPod and iPhone as platforms; added Google.s Android</li>
+</ul>
+
+<p>4/22/2009 Update</p>
+
+<ul>
+<li>added support for GoogleBot, the W3C Validator and Yahoo! Slurp</li>
+</ul>
+
+<p>4/27/2009 Update</p>
+
+<ul>
+<li>John pointed out a terrible typo (see below) . removed the typo</li>
+</ul>
+
+<p>11/08/2009 Update</p>
+
+<ul>
+<li>A lot of changes to the script, thank you to everyone for the suggestions and emails. This release should add all of the requested features. Added BlackBerry, mobile detection, Opera Mini support, robot detection, Opera 10.s UserAgent .mess., detection for IceCat and Shiretoko!</li>
+</ul>
+
+<p>3/7/2010 Update</p>
+
+<ul>
+<li>Version 1.7 was a <em>MAJOR</em> Rebuild (preg_match and other .slow. routine removal(s)) included the following changes:</li>
+<li>Almost allof Gary.s original code has been replaced</li>
+<li>Large PHPUNIT testing environment created to validate new releases and additions</li>
+<li>Added FreeBSD Platform</li>
+<li>Added OpenBSD Platform</li>
+<li>Added NetBSD Platform</li>
+<li>Added SunOS Platform</li>
+<li>Added OpenSolaris Platform</li>
+<li>Added support of the Iceweazel Browser</li>
+<li>Added isChromeFrame() call to check if chromeframe is in use</li>
+<li>Moved the Opera check in front of the Firefox check due to legacy Opera User Agents</li>
+<li>Added the __toString() method (Thanks Deano)</li>
+</ul>
+
+<p>4/27/2010: Update (Version 1.8)</p>
+
+<ul>
+<li>Added iPad support</li>
+</ul>
+
+<p>8/20/2010: Update (Version 1.9)</p>
+
+<ul>
+<li>Added MSN Explorer Browser</li>
+<li>Added Bing/MSN Robot</li>
+<li>Added the Android Platform</li>
+<li>Fixed issue with Android 1.6/2.2</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/MASNathan/Browser.php/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/MASNathan/Browser.php/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/MASNathan/Browser.php"></a> is maintained by <a href="https://github.com/MASNathan">MASNathan</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
